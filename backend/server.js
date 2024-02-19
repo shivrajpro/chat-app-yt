@@ -13,8 +13,8 @@ app.use(express.json()); //to parse the incoming requests with JSON payloads (fr
 app.get("/", (req, res) => {
   res.send("hello from server. nodemon installed. port changed");
 });
-*/
 
+ */
 app.use("/api/auth", authRoutes);
 
 app.listen(PORT, () => {
