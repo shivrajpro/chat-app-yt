@@ -1,3 +1,8 @@
 https://www.youtube.com/watch?v=HwCqsOis894
 
 jar@Mongo24
+
+for storing messages and conversations
+we will have two collections
+1. message - will contain id, senderId, receiverId and message
+2. conversation - will contain id, participants and messages
