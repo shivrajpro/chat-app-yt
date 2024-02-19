@@ -29,6 +29,14 @@ export const sendMessage = async (req, res) => {
       conversation.messages.push(newMessage._id); //put the message in array, if this is not 1st message
     }
 
+    // SOCKET IO FUNCTIONANLITY WILL GO HERE
+  
+    // collections were empty before these two lines
+    // await conversation.save();
+    // await newMessage.save();
+
+    await Promise.all([conversation.save(), newMessage.save()]); //optimization
+
     res.status(201).json(newMessage);
   } catch (error) {
     console.log("error in sendMessage controller", error.message);
