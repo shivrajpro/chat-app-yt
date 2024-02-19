@@ -1,8 +1,13 @@
 import React from 'react'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import Messages from '../../components/Messages/Messages'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <div>
+      <Sidebar/>
+      <Messages/>
+    </div>
   )
 }
 
