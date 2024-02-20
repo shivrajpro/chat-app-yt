@@ -18,9 +18,10 @@ const SignUp = () => {
   };
 
   const { loading, signup } = useSignup();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("inputs", inputs);
+    // console.log("inputs", inputs);
     await signup(inputs);
   };
 
@@ -105,8 +106,15 @@ const SignUp = () => {
           </Link>
 
           <div>
-            <button className="btn btn-block btn-sm mt-2 border border-slate-700">
-              Sign Up
+            <button
+              className="btn btn-block btn-sm mt-2 border border-slate-700"
+              disabled={loading}
+            >
+              {loading ? (
+                <span className="loading loading-spinner"></span>
+              ) : (
+                "Sign Up"
+              )}
             </button>
           </div>
         </form>
