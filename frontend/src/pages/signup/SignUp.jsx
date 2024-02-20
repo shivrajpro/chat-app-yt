@@ -18,6 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // await signup
     console.log("inputs", inputs);
   };
 
