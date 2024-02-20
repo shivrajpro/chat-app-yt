@@ -31,15 +31,15 @@ export const signup = async (req, res) => {
       profilePic: gender === "male" ? boyProfilePic : girlProfilePic,
     });
 
-    if(newUser){
+    if (newUser) {
       // generate jwt here
       generateTokenAndSetCookie(newUser._id, res);
       await newUser.save();
-  
+
       res.status(201).json({
         _id: newUser._id,
         fullName: newUser.fullName,
-        username: newUser.fullName,
+        username: newUser.username,
         profilePic: newUser.profilePic,
       });
     }
@@ -52,12 +52,15 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   // res.send("login route");
   try {
-    const {username, password} = req.body;
-    const user = await User.findOne({username});
-    const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+    const isPasswordCorrect = await bcrypt.compare(
+      password,
+      user?.password || ""
+    );
 
-    if(!user || !isPasswordCorrect){
-      return res.status(400).json({error: "invalid username or password"});
+    if (!user || !isPasswordCorrect) {
+      return res.status(400).json({ error: "invalid username or password" });
     }
 
     generateTokenAndSetCookie(user._id, res);
@@ -66,21 +69,21 @@ export const login = async (req, res) => {
       _id: user._id,
       fullName: user.fullName,
       username: user.username,
-      profilePic: user.profilePic
-    })
+      profilePic: user.profilePic,
+    });
   } catch (error) {
     console.log("Error in login controller", error.message);
-    res.status(500).json({error: "internal server error"});
+    res.status(500).json({ error: "internal server error" });
   }
 };
 export const logout = (req, res) => {
   // res.send("logout route");
 
   try {
-    res.cookie("jwt", "", {maxAge:0});
-    res.status(200).json({message:"logged out successfully"})
+    res.cookie("jwt", "", { maxAge: 0 });
+    res.status(200).json({ message: "logged out successfully" });
   } catch (error) {
     console.log("error in logout controller", error.message);
-    res.status(500).json({error:"internal server error"});
+    res.status(500).json({ error: "internal server error" });
   }
 };

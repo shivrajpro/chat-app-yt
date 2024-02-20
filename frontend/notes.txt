@@ -1,1 +1,3 @@
 tailwindcss glassmorphism generator
+study about
+hooks, context api, refs
