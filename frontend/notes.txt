@@ -1,3 +1,5 @@
 tailwindcss glassmorphism generator
 study about
 hooks, context api, refs
+
+in production dev dependencies pkg are not installed
