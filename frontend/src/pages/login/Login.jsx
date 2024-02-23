@@ -40,7 +40,7 @@ const Login = () => {
             </label>
             <input
               type="password"
-              placeholder="Enter Password"
+              placeholder="Enter password"
               className="w-full input input-bordered h-10"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
